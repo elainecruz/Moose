@@ -106,7 +106,11 @@ struct RootView: View {
                                 Text(description)
                                     .padding()
                             }
-                            Button(action: {}){
+                            Button(action: {
+                                if let image = painting.image{
+                                    bank.addSelectedPainting(image: image)
+                                }
+                            }){
                                 Text("Add to your home")
                                     .padding()
                                     .background(Color(.systemBlue))
