@@ -17,7 +17,8 @@
 		3555ABA825645D9E000F8C10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3555ABA625645D9E000F8C10 /* Main.storyboard */; };
 		3555ABAA25645DA0000F8C10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3555ABA925645DA0000F8C10 /* Assets.xcassets */; };
 		3555ABAD25645DA0000F8C10 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3555ABAB25645DA0000F8C10 /* LaunchScreen.storyboard */; };
-		35DED956256465A500D1AD41 /* Painting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DED955256465A500D1AD41 /* Painting.swift */; };
+		355EE97B25672963001F838B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355EE97A25672963001F838B /* CardView.swift */; };
+		35DED956256465A500D1AD41 /* PaintingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DED955256465A500D1AD41 /* PaintingJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,8 @@
 		3555ABA925645DA0000F8C10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3555ABAC25645DA0000F8C10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3555ABAE25645DA0000F8C10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35DED955256465A500D1AD41 /* Painting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Painting.swift; sourceTree = "<group>"; };
+		355EE97A25672963001F838B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		35DED955256465A500D1AD41 /* PaintingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +70,10 @@
 			children = (
 				3555ABA025645D9E000F8C10 /* AppDelegate.swift */,
 				3555ABA225645D9E000F8C10 /* ViewController.swift */,
-				35DED955256465A500D1AD41 /* Painting.swift */,
+				35DED955256465A500D1AD41 /* PaintingJSON.swift */,
 				351E9C4C2564791C0046DBA4 /* PaintingsBank.swift */,
 				351E9C49256478F10046DBA4 /* SearchBarView.swift */,
+				355EE97A25672963001F838B /* CardView.swift */,
 				351E9C462564789B0046DBA4 /* SwiftUIView.swift */,
 				351E9C4F25647D2D0046DBA4 /* UIEditingExtensions.swift */,
 				3511C12025646DED00756179 /* PaintingE.rcproject */,
@@ -153,10 +156,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3555ABA325645D9E000F8C10 /* ViewController.swift in Sources */,
+				355EE97B25672963001F838B /* CardView.swift in Sources */,
 				3555ABA125645D9E000F8C10 /* AppDelegate.swift in Sources */,
 				351E9C4D2564791C0046DBA4 /* PaintingsBank.swift in Sources */,
 				3511C12125646DED00756179 /* PaintingE.rcproject in Sources */,
-				35DED956256465A500D1AD41 /* Painting.swift in Sources */,
+				35DED956256465A500D1AD41 /* PaintingJSON.swift in Sources */,
 				351E9C4A256478F10046DBA4 /* SearchBarView.swift in Sources */,
 				351E9C5025647D2D0046DBA4 /* UIEditingExtensions.swift in Sources */,
 				351E9C472564789B0046DBA4 /* SwiftUIView.swift in Sources */,
