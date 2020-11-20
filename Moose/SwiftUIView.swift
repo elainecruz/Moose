@@ -23,10 +23,12 @@ struct PaintingView: View{
             Text(painting.name)
                 .font(.title3)
                 .bold()
+                .lineLimit(3)
             if let name = painting.artist{
                 Text(name)
                     .foregroundColor(Color(.systemGray2))
                     .font(.subheadline)
+                    .lineLimit(3)
             }
         }
     }
