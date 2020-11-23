@@ -11,6 +11,8 @@ import SwiftUI
 struct SearchBarView: View{
     @ObservedObject var bank: PaintingsBank
     
+    let color = Color(red: 0xd1/0xff, green: 0x78/0xff, blue: 0x30/0xff)
+    
     var body: some View{
         // Search view
         HStack {
@@ -21,7 +23,7 @@ struct SearchBarView: View{
                     self.bank.isSearching = true
                 }, onCommit: {
                     print("onCommit")
-                }).foregroundColor(.primary)
+                }).foregroundColor(Color(.systemGray3))
                 
                 Button(action: {
                     self.bank.searchText = ""
@@ -31,7 +33,7 @@ struct SearchBarView: View{
             }
             .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
             .foregroundColor(.secondary)
-            .background(Color(.secondarySystemBackground))
+            .background(Color(.systemGray5))
             .cornerRadius(10.0)
             
             if bank.isSearching  {
@@ -40,7 +42,7 @@ struct SearchBarView: View{
                     self.bank.searchText = ""
                     self.bank.isSearching = false
                 }
-                .foregroundColor(Color(.systemBlue))
+                .foregroundColor(color)
                 
             }
             else{
@@ -49,6 +51,7 @@ struct SearchBarView: View{
                     bank.addItems()
                 }){
                     Image(systemName: "repeat")
+                        .foregroundColor(color)
                 }
             }
         }

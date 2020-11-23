@@ -52,6 +52,9 @@ class PaintingsBank: ObservableObject, Identifiable{
     @Published var searchText: String = ""
     @Published var isSearching: Bool = false
     
+    @Published var isCardOpen: Bool = false
+    @Published var cardPosition: CGFloat = UIScreen.main.bounds.height - 120
+    
     var selectedPaintings: [UIImage] = []
     
     init(){

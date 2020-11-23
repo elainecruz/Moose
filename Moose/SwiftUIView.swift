@@ -9,6 +9,8 @@ import SwiftUI
 struct PaintingView: View{
     @ObservedObject var painting: Painting
     
+    let color = Color(red: 0xd1/0xff, green: 0x78/0xff, blue: 0x30/0xff)
+    
     var body: some View{
         VStack{
             if painting.image != nil{
@@ -24,6 +26,7 @@ struct PaintingView: View{
                 .font(.title3)
                 .bold()
                 .lineLimit(3)
+                .foregroundColor(.primary)
             if let name = painting.artist{
                 Text(name)
                     .foregroundColor(Color(.systemGray2))
@@ -40,6 +43,9 @@ struct RootView: View {
     @State private var isSelected = false
     
     @State var selectedIndex: Int? = nil
+    
+    let color = Color(red: 0xd1/0xff, green: 0x78/0xff, blue: 0x30/0xff)
+    
     var body: some View {
         
         VStack{
@@ -82,6 +88,7 @@ struct RootView: View {
                             Text("Back")
                             Spacer()
                         }
+                        .foregroundColor(color)
                     }
                     ScrollView{
                         VStack{
@@ -111,12 +118,14 @@ struct RootView: View {
                             Button(action: {
                                 if let image = painting.image{
                                     bank.addSelectedPainting(image: image)
+                                    bank.isCardOpen = false
+                                    bank.cardPosition = UIScreen.main.bounds.height - 120
                                 }
                             }){
                                 Text("Add to your home")
                                     .padding()
-                                    .background(Color(.systemBlue))
-                                    .foregroundColor(Color(.systemBackground))
+                                    .background(color)
+                                    .foregroundColor(.primary)
                                     .cornerRadius(10)
                                     .padding()
                             }
@@ -127,7 +136,7 @@ struct RootView: View {
             }
             
         }
-        .background(Color(.systemBackground).cornerRadius(20, corners: [.topLeft,.topRight]))
+        .background(Color(.systemGray6).cornerRadius(20, corners: [.topLeft,.topRight]))
         .tag(0)
         
         
@@ -138,7 +147,7 @@ struct RootView: View {
 struct ContentView: View {
     var bank: PaintingsBank
     var body: some View {
-        SlideOverView{
+        SlideOverView(bank: bank){
             RootView(bank: bank)
         }
     }

@@ -1,2 +1,2 @@
-# Moose
-Crete your own museum
+# moose
+projeto AR de Introdução à Multimídia no CIn

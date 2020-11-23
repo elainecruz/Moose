@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct SlideOverView<Content> : View where Content : View {
-
+    
+    @ObservedObject var bank: PaintingsBank
     var content: () -> Content
     
-    public init(content: @escaping () -> Content) {
-        self.content = content
-    }
-     
     public var body: some View {
-        ModifiedContent(content: self.content(), modifier: CardView())
+        ModifiedContent(content: self.content(), modifier: CardView(bank: bank))
     }
 }
 
@@ -24,23 +21,24 @@ struct SlideOverView<Content> : View where Content : View {
 struct CardView: ViewModifier {
     @State private var dragging = false
     @GestureState private var dragTracker: CGSize = CGSize.zero
-    @State private var position: CGFloat = UIScreen.main.bounds.height - 120
+    
+    @ObservedObject var bank: PaintingsBank
     
     func body(content: Content) -> some View {
         ZStack(alignment: .top) {
             ZStack(alignment: .top) {
                 RoundedRectangle(cornerRadius: 2.5)
                     .frame(width: 40, height: 5.0)
-                    .foregroundColor(Color(.systemGray6))
+                    .foregroundColor(Color(.systemGray5))
                     .padding(10)
                 content.padding(.top, 30)
             }
             .frame(minWidth: UIScreen.main.bounds.width)
             .scaleEffect(x: 1, y: 1, anchor: .center)
-            .background(Color(.systemBackground))
+            .background(Color(.systemGray6))
             .cornerRadius(15)
         }
-        .offset(y:  max(0, position + self.dragTracker.height))
+        .offset(y:  max(0, bank.cardPosition + self.dragTracker.height))
         .animation(dragging ? nil : {
             Animation.interpolatingSpring(stiffness: 250.0, damping: 40.0, initialVelocity: 5.0)
         }())
@@ -52,14 +50,16 @@ struct CardView: ViewModifier {
     
     private func onDragEnded(drag: DragGesture.Value) {
         dragging = false
-        let high = UIScreen.main.bounds.height - 100
+        let high = UIScreen.main.bounds.height - 120
         let low: CGFloat = 100
         let dragDirection = drag.predictedEndLocation.y - drag.location.y
         //can also calculate drag offset to make it more rigid to shrink and expand
         if dragDirection > 0 {
-            position = high
+            bank.cardPosition = high
+            bank.isCardOpen = false
         } else {
-            position = low
+            bank.cardPosition = low
+            bank.isCardOpen = true
         }
     }
 }
